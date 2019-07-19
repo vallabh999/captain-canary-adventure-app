@@ -1,15 +1,11 @@
 pipeline {
-    agent {
-        docker {
-            image 'node:12-alpine' 
-            args '-p 3000:3000' 
-        }
-    }
-    stages {
-        stage('Build') { 
-            steps {
-                sh 'npm install' 
-            }
-        }
-    }
+   def commit_id
+   stage('Preparation') {
+     checkout scm
+     sh "git rev-parse --short HEAD > .git/commit-id"                        
+     commit_id = readFile('.git/commit-id').trim()
+   }
+   stage('Compile/Build') {
+       sh 'npm install'
+   }
 }
