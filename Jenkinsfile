@@ -1,7 +1,7 @@
 pipeline {
     agent {
         docker {
-            image 'node:6-alpine'
+            image 'node:12-alpine'
             args '-p 3000:3000'
         }
     }
@@ -14,9 +14,9 @@ pipeline {
                 sh 'npm install'
             }
         }
-        stage('Test') { 
+        stage('Run') { 
             steps {
-                echo 'Hello Jenkins Blue Ocean!' 
+                sh 'node index.js' 
             }
         }
     }
