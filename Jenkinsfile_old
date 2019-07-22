@@ -1,5 +1,9 @@
 pipeline {
-    agent any
+    agent {
+        docker {
+            image 'node:12-alpine'
+            args '-p 3000:3000'
+        }
     }
     environment {
         CI = 'true' 
@@ -7,12 +11,12 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                echo 'This is build stage'
+                sh 'npm install'
             }
         }
         stage('Run') { 
             steps {
-                echo 'This is run stage' 
+                sh 'node index.js' 
             }
         }
     }
