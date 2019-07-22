@@ -1,18 +1,20 @@
 pipeline {
     agent any
-    }
-    environment {
-        CI = 'true' 
-    }
+
     stages {
         stage('Build') {
             steps {
-                echo 'This is build stage'
+                echo 'Building..'
             }
         }
-        stage('Run') { 
+        stage('Test') {
             steps {
-                echo 'This is run stage' 
+                echo 'Testing..'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                echo 'Deploying....'
             }
         }
     }
