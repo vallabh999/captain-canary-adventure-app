@@ -1,7 +1,9 @@
 pipeline {
-  agent any
-
-  tools {nodejs "nodejs"}
+   //agent any
+  agent {
+     docker { image 'node:12-alpine' }
+  }
+ // tools {nodejs "nodejs"}
 
   stages {    
     stage('Cloning Git') {
