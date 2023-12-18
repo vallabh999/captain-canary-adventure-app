@@ -1,25 +1,20 @@
-# Getting the base image for this simple node application
-FROM node:12-alpine
-# Adding maintainer info. This is optional
-MAINTAINER Dewan Ahmed (dewan.ishtiaque@hotmail.com)
+# Use an official Node runtime as a parent image
+FROM node:14
 
-# Create app directory and use it as working directory
-RUN mkdir -p /usr/src/app
+# Set the working directory in the container
 WORKDIR /usr/src/app
 
-# Install app dependencies
-# A wildcard is used to ensure both package.json AND package-lock.json are copied
-# where available (npm@5+)
-COPY package*.json ./
+# Copy the current directory contents into the container at /usr/src/app
+COPY . .
 
-# Getting the package manager
+# Install any needed packages specified in package.json
 RUN npm install
 
-# Bundle app source
-COPY . /usr/src/app
-
-# Telling docker which file to use to start this application
-CMD ["node", "index.js"]
-
-# Opening up this port on the running container
+# Make port 3000 available to the world outside this container
 EXPOSE 3000
+
+# Define environment variable
+ENV NAME World
+
+# Run app.js when the container launches
+CMD [ "node", "app.js" ]
