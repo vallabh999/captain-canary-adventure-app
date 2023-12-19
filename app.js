@@ -13,6 +13,20 @@ app.get('/', (req, res) => {
         <html>
         <head>
             <title>Captain Canary's Adventures</title>
+            <style>
+                body {
+                    text-align: center;
+                    font-family: Arial, sans-serif;
+                }
+                #canaryImg {
+                    width: 50%;
+                    max-width: 500px; /* Adjust max-width as needed */
+                    margin-top: 50px;
+                }
+                #content {
+                    margin-top: 20px;
+                }
+            </style>
             <script>
                 function toggleImage() {
                     var img = document.getElementById('canaryImg');
@@ -31,9 +45,11 @@ app.get('/', (req, res) => {
             </script>
         </head>
         <body>
-            <img id="canaryImg" src="/canary-working.png" alt="Captain Canary Working" style="width:200px;">
-            <button id="toggleBtn" onclick="toggleImage()">Go on Vacation!</button>
-            <p id="displayText">Pod Name: ${podName}</p>
+            <img id="canaryImg" src="/canary-working.png" alt="Captain Canary Working">
+            <div id="content">
+                <button id="toggleBtn" onclick="toggleImage()">Go on Vacation!</button>
+                <p id="displayText">Pod Name: ${podName}</p>
+            </div>
         </body>
         </html>
     `);
