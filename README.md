@@ -1,32 +1,66 @@
-# Demo Node.js Application
+# Captain Canary Adventure App
 
-This is a simple Node.js application that displays "Hello World" along with the server's absolute URL and a static version number.
+## Introduction
+The Captain Canary Adventure App is a Node.js web application that showcases Captain Canary's adventures. It toggles between working and vacation modes and displays the Kubernetes pod name when deployed in a cluster.
 
-## Getting Started
+## Features
+- Toggle between Captain Canary's working and vacation modes.
+- Display the current time in Hawaii during vacation mode.
+- Show the Kubernetes pod name when deployed in a cluster.
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
+## Prerequisites
+- Node.js (for local running without Docker).
+- Docker installed on your machine (for running via Docker).
+- Access to a Kubernetes cluster (optional, for Kubernetes deployment).
 
-### Prerequisites
+## Installation and Running the App
 
-What things you need to install the software and how to install them
+### Running Locally without Docker
+1. **Clone the Repository:**
+   ```
+   git clone https://github.com/dewandemo/captain-canary-adventure-app.git
+   cd captain-canary-adventure-app
+   ```
 
-- Node.js
-- Docker (for containerization)
+2. **Install Dependencies:**
+   ```
+   npm install
+   ```
 
-### Installing
+3. **Start the Application:**
+   ```
+   npm start
+   ```
+   Access the app at `http://localhost:3000`.
 
-A step by step series of examples that tell you how to get a development environment running
+### Running via Docker
+1. **Build the Docker Image:**
+   ```
+   docker build -t captain-canary-app .
+   ```
 
-1. Clone the repo
-2. Navigate to the repo directory
-3. Run `npm install` to install dependencies
-4. Run `node app.js` to start the server locally
+2. **Run the Docker Container:**
+   ```
+   docker run -p 3000:3000 captain-canary-app
+   ```
+   Access the app at `http://localhost:3000`.
 
-### Using Docker
+## Kubernetes Deployment
+Refer to the `k8s-manifests` folder containing Kubernetes manifests for deploying the app. Update the `imageName` and `imageTag` in `values.yaml` and apply `deployment.yaml` and `service.yaml` from the `templates` folder.
 
-To build and run the app as a Docker container:
+## Usage
+- Access the web app on your browser.
+- Click the button to toggle between Captain Canary's modes.
+- In vacation mode, enjoy the Hawaii time display.
+- In Kubernetes, the pod name is displayed.
 
-1. Build the image: `docker build -t demo-node-app .`
-2. Run the container: `docker run -p 3000:3000 demo-node-app`
+## Contributing
+Contributions are welcome. Please follow the standard fork, branch, and pull request workflow.
 
-Navigate to `http://localhost:3000` in your browser to view the app.
+## License
+Distributed under the MIT License. See `LICENSE` for more information.
+
+## Contact
+Your Name - [@DewanAhmed](https://twitter.com/DewanAhmed) - www.dewanahmed.com
+
+Project Link: [https://github.com/dewandemo/captain-canary-adventure-app](https://github.com/dewandemo/captain-canary-adventure-app)
