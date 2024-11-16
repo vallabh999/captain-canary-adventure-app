@@ -1,3 +1,3 @@
 image:
   name: vallabh4/harness
-  tag: <+artifacts.primary.image>
+  tag: latest
